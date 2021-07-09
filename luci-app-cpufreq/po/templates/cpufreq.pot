@@ -1,0 +1,35 @@
+msgid ""
+msgstr "Content-Type: text/plain; charset=UTF-8"
+
+msgid "CPU Frequence"
+msgstr ""
+
+msgid "Manage CPU Frequence over LuCI."
+msgstr ""
+
+msgid "CPU frequence:"
+msgstr ""
+
+msgid "temperature:"
+msgstr ""
+
+msgid "Governor"
+msgstr ""
+
+msgid "Apply"
+msgstr ""
+
+msgid "conservative"
+msgstr ""
+
+msgid "userspace"
+msgstr ""
+
+msgid "powersave"
+msgstr ""
+
+msgid "ondemand"
+msgstr ""
+
+msgid "performance"
+msgstr ""
