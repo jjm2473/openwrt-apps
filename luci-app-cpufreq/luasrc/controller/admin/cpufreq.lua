@@ -8,8 +8,8 @@ module("luci.controller.admin.cpufreq",package.seeall)
 
 function index()
 
-  entry({"admin", "system", "cpufreq"}, alias("admin", "system", "cpufreq", "main"), _("Cpu Freq"), 55)
-  entry({"admin", "system", "cpufreq", "main"}, form("cpufreq/main"), nil).leaf = true
+  entry({"admin", "system", "cpufreq"}, alias("admin", "system", "cpufreq", "main"), _("CPU Tuning"), 55)
+  entry({"admin", "system", "cpufreq", "main"}, cbi("cpufreq/main"), nil).leaf = true
   entry({"admin", "system", "cpufreq", "get_cpu_info"}, call("get_cpu_info"), nil).leaf = true
 end
 

@@ -1,10 +1,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=UTF-8"
 
-msgid "CPU Frequence"
+msgid "CPU Tuning"
 msgstr ""
 
-msgid "Manage CPU Frequence over LuCI."
+msgid "Manage CPU performance and temperature over LuCI."
 msgstr ""
 
 msgid "CPU frequence:"
@@ -13,10 +13,7 @@ msgstr ""
 msgid "temperature:"
 msgstr ""
 
-msgid "Governor"
-msgstr ""
-
-msgid "Apply"
+msgid "CPUFreq governor"
 msgstr ""
 
 msgid "conservative"
@@ -32,4 +29,10 @@ msgid "ondemand"
 msgstr ""
 
 msgid "performance"
+msgstr ""
+
+msgid "interactive"
+msgstr ""
+
+msgid "Fan trigger temperature"
 msgstr ""

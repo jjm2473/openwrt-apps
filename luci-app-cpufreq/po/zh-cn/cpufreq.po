@@ -1,11 +1,11 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=UTF-8"
 
-msgid "CPU Frequence"
-msgstr "CPU频率调节"
+msgid "CPU Tuning"
+msgstr "CPU调节"
 
-msgid "Manage CPU Frequence over LuCI."
-msgstr "通过LuCI调节CPU频率"
+msgid "Manage CPU performance and temperature over LuCI."
+msgstr "通过LuCI调节CPU性能和温度"
 
 msgid "CPU frequence:"
 msgstr "CPU频率:"
@@ -13,8 +13,8 @@ msgstr "CPU频率:"
 msgid "temperature:"
 msgstr "温度:"
 
-msgid "Governor"
-msgstr "策略"
+msgid "CPUFreq governor"
+msgstr "CPU性能策略"
 
 msgid "Apply"
 msgstr "应用"
@@ -33,3 +33,9 @@ msgstr "自动调节"
 
 msgid "performance"
 msgstr "性能模式"
+
+msgid "interactive"
+msgstr "交互设备"
+
+msgid "Fan trigger temperature"
+msgstr "风扇启动温度"
