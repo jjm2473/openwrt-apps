@@ -27,7 +27,7 @@ end
 o.rmempty = false
 o.default = cur_governor
 
-if fs.access(temp0_path, "rw") then
+if math.floor(fs.stat(temp0_path, "modedec")/200) % 2 == 1 then
   local cur_trip_temp = luci.util.trim(fs.readfile(temp0_path))
   o = s:option(Value, "fan_temp", translate("Fan trigger temperature") .. " (&#8451;)")
   o.rmempty = false
