@@ -13,7 +13,6 @@ end
 function homebox_status()
 	local sys  = require "luci.sys"
 	local uci  = require "luci.model.uci".cursor()
-	local port = tonumber(uci:get_first("homebox", "homebox", "port"))
 
 	local status = {
 		running = (sys.call("pidof homebox >/dev/null") == 0),

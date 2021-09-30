@@ -10,10 +10,10 @@ msgstr "点击打开Homebox"
 msgid "Homebox is a tool for local network speed testing"
 msgstr "Homebox是一个局域网测速工具"
 
-msgid "The homebox service is running."
+msgid "The Homebox service is running."
 msgstr "Homebox服务已启动"
 
-msgid "The homebox service is not running."
+msgid "The Homebox service is not running."
 msgstr "Homebox服务未启动"
 
 msgid "Homebox Status"

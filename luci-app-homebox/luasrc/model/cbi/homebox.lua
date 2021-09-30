@@ -1,7 +1,7 @@
 
 local m, s
 
-m = Map("homebox", translate("homebox"), translate("Homebox is a tool for local network speed testing"))
+m = Map("homebox", translate("Homebox"), translate("Homebox is a tool for local network speed testing"))
 
 m:section(SimpleSection).template  = "homebox_status"
 
