@@ -43,13 +43,13 @@ TAR_CMD=$(HOST_TAR) -C $(1) $(TAR_OPTIONS)
 define Build/Configure
 	( \
 		cd $(PKG_BUILD_DIR)/server; \
-		GOPATH=$(PKG_BUILD_DIR)/.go_work/build \
-		go get -u github.com/go-bindata/go-bindata/...; \
+		$(GO_PKG_VARS) \
+		go get -d -modcacherw; \
 	)
 	( \
 		cd $(PKG_BUILD_DIR)/server; \
-		$(GO_PKG_VARS) \
-		go mod download; \
+		GOPATH=$(PKG_BUILD_DIR)/.go_work/build \
+		go get -modcacherw github.com/go-bindata/go-bindata/...; \
 	)
 endef
 
