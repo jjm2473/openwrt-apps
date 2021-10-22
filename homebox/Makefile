@@ -84,7 +84,7 @@ fi
 endef
 
 define Host/Configure
-	cd $(HOST_BUILD_DIR)/web && npm --cache-min 1440 install
+	cd $(HOST_BUILD_DIR)/web && rm -f package-lock.json && npm --cache-min 1440 install
 endef
 
 define Host/Compile
