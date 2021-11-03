@@ -11,7 +11,7 @@ msgid "CPU frequence:"
 msgstr "CPU频率:"
 
 msgid "temperature:"
-msgstr "温度:"
+msgstr "核心温度:"
 
 msgid "CPUFreq governor"
 msgstr "CPU性能策略"
@@ -20,10 +20,10 @@ msgid "Apply"
 msgstr "应用"
 
 msgid "conservative"
-msgstr "自动渐变"
+msgstr "Conservative(平滑)"
 
 msgid "userspace"
-msgstr "用户空间"
+msgstr "手动"
 
 msgid "powersave"
 msgstr "节能模式"
@@ -35,7 +35,7 @@ msgid "performance"
 msgstr "性能模式"
 
 msgid "interactive"
-msgstr "交互设备"
+msgstr "Interactive(灵敏)"
 
 msgid "Fan trigger temperature"
 msgstr "风扇启动温度"
