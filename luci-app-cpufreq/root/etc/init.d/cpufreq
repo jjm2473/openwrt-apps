@@ -11,8 +11,8 @@ start() {
 	config_load cpufreq
 	config_foreach get_config cpufreq
 
-    sh -c "echo $governor > /sys/devices/system/cpu/cpufreq/policy0/scaling_governor" 2>/dev/null
-    sh -c "echo ${fan_temp}000 > /sys/devices/virtual/thermal/thermal_zone0/trip_point_0_temp" 2>/dev/null
+	sh -c "echo $governor > /sys/devices/system/cpu/cpufreq/policy0/scaling_governor" 2>/dev/null
+	sh -c "echo ${fan_temp}000 > /sys/devices/virtual/thermal/thermal_zone0/trip_point_0_temp" 2>/dev/null
 
-    return 0
+	return 0
 }

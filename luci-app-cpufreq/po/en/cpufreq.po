@@ -1,6 +1,9 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=UTF-8"
 
+msgid "Tuning"
+msgstr "Tuning"
+
 msgid "CPU Tuning"
 msgstr "CPU Tuning"
 
@@ -36,3 +39,24 @@ msgstr "Interactive"
 
 msgid "Fan trigger temperature"
 msgstr "Fan trigger temperature"
+
+msgid "IPK Mirror"
+msgstr "IPK Mirror"
+
+msgid "Select IPK Mirror server"
+msgstr "Select IPK Mirror server"
+
+msgid "Mirror server"
+msgstr "Mirror server"
+
+msgid "Tsinghua University"
+msgstr "Tsinghua University"
+
+msgid "USTC"
+msgstr "USTC"
+
+msgid "Alibaba Cloud"
+msgstr "Alibaba Cloud"
+
+msgid "Tencent Cloud"
+msgstr "Tencent Cloud"

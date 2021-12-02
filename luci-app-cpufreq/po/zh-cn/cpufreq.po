@@ -1,6 +1,9 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=UTF-8"
 
+msgid "Tuning"
+msgstr "杂项设置"
+
 msgid "CPU Tuning"
 msgstr "CPU调节"
 
@@ -39,3 +42,24 @@ msgstr "Interactive(灵敏)"
 
 msgid "Fan trigger temperature"
 msgstr "风扇启动温度"
+
+msgid "IPK Mirror"
+msgstr "IPK镜像服务器"
+
+msgid "Select IPK Mirror server"
+msgstr "选择IPK镜像服务器"
+
+msgid "Mirror server"
+msgstr "镜像服务器"
+
+msgid "Tsinghua University"
+msgstr "清华大学"
+
+msgid "USTC"
+msgstr "中国科学技术大学"
+
+msgid "Alibaba Cloud"
+msgstr "阿里云"
+
+msgid "Tencent Cloud"
+msgstr "腾讯云"

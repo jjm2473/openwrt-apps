@@ -7,10 +7,23 @@ require "luci.util"
 module("luci.controller.admin.cpufreq",package.seeall)
 
 function index()
+  local appname = "tuning"
+  local defaultpage = nil
+  entry({"admin", "system", appname}).dependent = true
+  if nixio.fs.access("/sys/devices/system/cpu/cpufreq/policy0/cpuinfo_cur_freq") then
+    defaultpage = defaultpage or alias("admin", "system", appname, "main")
+    entry({"admin", "system", appname, "main"}, cbi("cpufreq/main"), _("CPU Tuning"), 1).leaf = true
+    entry({"admin", "system", appname, "get_cpu_info"}, call("get_cpu_info"), nil).leaf = true
+  end
+  if nixio.fs.access("/rom/etc/opkg/distfeeds.conf") then
+    defaultpage = defaultpage or alias("admin", "system", appname, "ipk")
+    entry({"admin", "system", appname, "ipk"}, cbi("cpufreq/ipk"), _("IPK Mirror"), 2).leaf = true
+  end
 
-  entry({"admin", "system", "cpufreq"}, alias("admin", "system", "cpufreq", "main"), _("CPU Tuning"), 59)
-  entry({"admin", "system", "cpufreq", "main"}, cbi("cpufreq/main"), nil).leaf = true
-  entry({"admin", "system", "cpufreq", "get_cpu_info"}, call("get_cpu_info"), nil).leaf = true
+  if defaultpage then
+    entry({"admin", "system", appname}, defaultpage, _("Tuning"), 59)
+  end
+
 end
 
 function get_cpu_info()
