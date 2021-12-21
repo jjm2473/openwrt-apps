@@ -7,7 +7,7 @@ msgstr ""
 msgid "Already the latest firmware"
 msgstr ""
 
-msgid "Check"
+msgid "Check update"
 msgstr ""
 
 msgid "Found new firmware"
