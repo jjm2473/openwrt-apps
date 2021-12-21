@@ -55,7 +55,6 @@ function action_ota()
 end
 
 function action_check()
-  local i18n = require "luci.i18n"
   local r,o,e = ota_exec("ota check")
   local ret = {
     code = 500,
@@ -66,7 +65,7 @@ function action_check()
     ret.msg = o
   elseif r == 1 then
     ret.code = 1
-    ret.msg = i18n.translatef("Already the latest firmware")
+    ret.msg = "Already the latest firmware"
   else
     ret.code = 500
     ret.msg = e
