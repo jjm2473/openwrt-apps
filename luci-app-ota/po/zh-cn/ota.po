@@ -2,7 +2,7 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=UTF-8"
 
 msgid "OTA"
-msgstr "在线更新"
+msgstr "在线升级"
 
 msgid "Already the latest firmware"
 msgstr "已经是最新固件"
@@ -41,7 +41,7 @@ msgid "Download failed"
 msgstr "下载失败"
 
 msgid "Upgrade firmware On the Air"
-msgstr "在线更新固件"
+msgstr "在线升级固件"
 
 msgid "Check and upgrade firmware from the Internet"
 msgstr "通过网络检查和更新固件"
