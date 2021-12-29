@@ -19,6 +19,12 @@ function index()
     defaultpage = defaultpage or alias("admin", "system", appname, "ipk")
     entry({"admin", "system", appname, "ipk"}, cbi("cpufreq/ipk"), _("IPK Mirror"), 2).leaf = true
   end
+  if nixio.fs.access("/etc/config/samba4") then
+    defaultpage = defaultpage or alias("admin", "system", appname, "samba")
+    entry({"admin", "system", appname, "samba"}, cbi("cpufreq/samba"), _("Samba"), 3).leaf = true
+  end
+  defaultpage = defaultpage or alias("admin", "system", appname, "boot")
+  entry({"admin", "system", appname, "boot"}, cbi("cpufreq/boot"), _("Boot"), 4).leaf = true
 
   if defaultpage then
     entry({"admin", "system", appname}, defaultpage, _("Tuning"), 59)

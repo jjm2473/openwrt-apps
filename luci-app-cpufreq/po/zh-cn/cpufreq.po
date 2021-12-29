@@ -63,3 +63,24 @@ msgstr "阿里云"
 
 msgid "Tencent Cloud"
 msgstr "腾讯云"
+
+msgid "Boot"
+msgstr "启动"
+
+msgid "Delay before mounting"
+msgstr "延迟挂载磁盘"
+
+msgid "Timeout (seconds)"
+msgstr "超时（秒）"
+
+msgid "Or until these device(s) ready (UUID):"
+msgstr "或者直到这些磁盘准备好（UUID）："
+
+msgid "Samba expert"
+msgstr "Samba高级设置"
+
+msgid "Allow legacy protocols"
+msgstr "允许旧协议"
+
+msgid "Allow old client, don't use this option for secure environments!"
+msgstr "允许老客户端连接（例如一些电视盒或手机），可能有安全风险"
