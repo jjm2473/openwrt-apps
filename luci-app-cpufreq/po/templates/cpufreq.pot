@@ -81,3 +81,24 @@ msgstr ""
 
 msgid "Allow old client, don't use this option for secure environments!"
 msgstr ""
+
+msgid "Sandbox"
+msgstr ""
+
+msgid "Simple sandbox for OpenWRT"
+msgstr ""
+
+msgid "This action will reboot device"
+msgstr ""
+
+msgid "Commit"
+msgstr ""
+
+msgid "Reset"
+msgstr ""
+
+msgid "cpufreq/sb_info"
+msgstr ""
+
+msgid "cpufreq/sb_guide"
+msgstr ""

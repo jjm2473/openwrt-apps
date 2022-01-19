@@ -84,3 +84,24 @@ msgstr "允许旧协议"
 
 msgid "Allow old client, don't use this option for secure environments!"
 msgstr "允许老客户端连接（例如一些电视盒或手机），可能有安全风险"
+
+msgid "Sandbox"
+msgstr "沙箱"
+
+msgid "Simple sandbox for OpenWRT"
+msgstr "一个简易沙箱"
+
+msgid "This action will reboot device"
+msgstr "此操作将重启设备"
+
+msgid "Commit"
+msgstr "提交"
+
+msgid "Reset"
+msgstr "重置"
+
+msgid "cpufreq/sb_info"
+msgstr "cpufreq/sb_info.zh-cn"
+
+msgid "cpufreq/sb_guide"
+msgstr "cpufreq/sb_guide.zh-cn"

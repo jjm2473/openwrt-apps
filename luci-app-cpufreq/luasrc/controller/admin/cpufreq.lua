@@ -7,6 +7,7 @@ require "luci.util"
 module("luci.controller.admin.cpufreq",package.seeall)
 
 function index()
+  local sys = require "luci.sys"
   local appname = "tuning"
   local defaultpage = nil
   entry({"admin", "system", appname}).dependent = true
@@ -26,6 +27,13 @@ function index()
   defaultpage = defaultpage or alias("admin", "system", appname, "boot")
   entry({"admin", "system", appname, "boot"}, cbi("cpufreq/boot"), _("Boot"), 4).leaf = true
 
+  if sys.call("grep -Fq /ext_overlay /lib/upgrade/platform.sh >/dev/null 2>&1") == 0 then
+    entry({"admin", "system", appname, "sandbox"}, call("sandbox_index", 
+        {prefix=luci.dispatcher.build_url("admin", "system", appname, "sandbox")}), _("Sandbox"), 5)
+    entry({"admin", "system", appname, "sandbox", "reset"}, post("sandbox_reset"))
+    entry({"admin", "system", appname, "sandbox", "commit"}, post("sandbox_commit"))
+  end
+
   if defaultpage then
     entry({"admin", "system", appname}, defaultpage, _("Tuning"), 59)
   end
@@ -41,4 +49,20 @@ function get_cpu_info()
   luci.http.status(200, "ok")
   luci.http.prepare_content("application/json")
   luci.http.write_json({freq=freq, temp=temp})
+end
+
+function sandbox_index(param)
+  luci.template.render("cpufreq/sandbox", {prefix=param.prefix})
+end
+
+function sandbox_reset()
+  local sys = require "luci.sys"
+  sys.call("touch /ext_overlay/.reset && sync /ext_overlay")
+  luci.sys.reboot()
+end
+
+function sandbox_commit()
+  local sys = require "luci.sys"
+  sys.call("touch /ext_overlay/.commit && sync /ext_overlay")
+  luci.sys.reboot()
 end
