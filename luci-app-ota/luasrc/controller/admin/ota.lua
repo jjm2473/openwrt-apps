@@ -7,7 +7,7 @@ require "luci.util"
 module("luci.controller.admin.ota",package.seeall)
 
 function index()
-  entry({"admin", "system", "ota"}, call("action_ota"), _("OTA"), 69)
+  entry({"admin", "system", "ota"}, post_on({ apply = "1" }, "action_ota"), _("OTA"), 69)
   entry({"admin", "system", "ota", "check"}, post("action_check"))
   entry({"admin", "system", "ota", "download"}, post("action_download"))
   entry({"admin", "system", "ota", "progress"}, call("action_progress"))
@@ -50,8 +50,31 @@ local function ota_exec(cmd)
   return rshift(r, 8), o or "", e or ""
 end
 
+local function image_supported(image)
+  return (os.execute("sysupgrade -T %q >/dev/null" % image) == 0)
+end
+
 function action_ota()
-	luci.template.render("admin_system/ota")
+  local image_tmp = "/tmp/firmware.img"
+  local http = require "luci.http"
+  if http.formvalue("apply") == "1" then
+    if not luci.dispatcher.test_post_security() then
+      return
+    end
+    if not image_supported(image_tmp) then
+      luci.template.render("admin_system/ota", {image_invalid = true})
+      return
+    end
+    local keep = (http.formvalue("keep") == "1") and "" or "-n"
+    luci.template.render("admin_system/ota_flashing", {
+      title = luci.i18n.translate("Flashing…"),
+      msg   = luci.i18n.translate("The system is flashing now.<br /> DO NOT POWER OFF THE DEVICE!<br /> Wait a few minutes before you try to reconnect. It might be necessary to renew the address of your computer to reach the device again, depending on your settings."),
+      addr  = (#keep > 0) and "192.168.1.1" or nil
+    })
+    fork_exec("sleep 1; killall dropbear uhttpd; sleep 1; /sbin/sysupgrade %s %q" %{ keep, image_tmp })
+  else
+    luci.template.render("admin_system/ota")
+  end
 end
 
 function action_check()
@@ -126,4 +149,28 @@ function action_cancel()
   end
   luci.http.prepare_content("application/json")
   luci.http.write_json(ret)
+end
+
+function fork_exec(command)
+	local pid = nixio.fork()
+	if pid > 0 then
+		return
+	elseif pid == 0 then
+		-- change to root dir
+		nixio.chdir("/")
+
+		-- patch stdin, out, err to /dev/null
+		local null = nixio.open("/dev/null", "w+")
+		if null then
+			nixio.dup(null, nixio.stderr)
+			nixio.dup(null, nixio.stdout)
+			nixio.dup(null, nixio.stdin)
+			if null:fileno() > 2 then
+				null:close()
+			end
+		end
+
+		-- replace with target command
+		nixio.exec("/bin/sh", "-c", command)
+	end
 end

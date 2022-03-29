@@ -48,3 +48,6 @@ msgstr "通过网络检查和更新固件"
 
 msgid "The latest firmware"
 msgstr "最新固件"
+
+msgid "The image file does not contain a supported format. Maybe try again later."
+msgstr "镜像文件格式不支持或损坏。也许稍候再试试"

@@ -3,8 +3,8 @@ include $(TOPDIR)/rules.mk
 
 LUCI_TITLE:=LuCI for OTA upgrade
 LUCI_PKGARCH:=all
-PKG_VERSION:=1.0
-PKG_RELEASE:=4
+PKG_VERSION:=1.1
+PKG_RELEASE:=1
 PKG_MAINTAINER:=jjm2473 <jjm2473@gmail.com>
 
 include ../luci-alias.mk

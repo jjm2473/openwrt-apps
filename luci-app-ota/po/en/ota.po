@@ -48,3 +48,6 @@ msgstr ""
 
 msgid "The latest firmware"
 msgstr ""
+
+msgid "The image file does not contain a supported format. Maybe try again later."
+msgstr ""
