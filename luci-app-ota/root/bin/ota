@@ -1,6 +1,6 @@
 #!/bin/sh
 # author jjm2473
-URL_BASE=https://fw.koolcenter.com/binary/ars2
+URL_BASE=https://fw.koolcenter.com/iStoreOS/ars2
 WRLOCK=/var/lock/ota_background.lock
 
 action=${1}
