@@ -3,8 +3,8 @@ LuCI - Lua Configuration Interface
 Copyright 2021 jjm2473
 ]]--
 
-require "luci.util"
 module("luci.controller.admin.cpufreq",package.seeall)
+require "luci.util"
 
 function index()
   local sys = require "luci.sys"

@@ -3,8 +3,8 @@ LuCI - Lua Configuration Interface
 Copyright 2021 jjm2473
 ]]--
 
-require "luci.util"
 module("luci.controller.admin.ota",package.seeall)
+require "luci.util"
 
 function index()
   entry({"admin", "system", "ota"}, post_on({ apply = "1" }, "action_ota"), _("OTA"), 69)
