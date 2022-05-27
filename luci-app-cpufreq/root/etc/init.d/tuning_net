@@ -13,8 +13,8 @@ boot() {
 	config_foreach hwacct_config hw_acct
 	[ "$hwpppoe_enabled" = 0 ] && on=off
 
-	ethtool -k eth0 hw-pppoe $on 2>/dev/null
-	ethtool -k eth1 hw-pppoe $on 2>/dev/null
+	ethtool -K eth0 hw-pppoe $on 2>/dev/null
+	ethtool -K eth1 hw-pppoe $on 2>/dev/null
 }
 
 start() {
