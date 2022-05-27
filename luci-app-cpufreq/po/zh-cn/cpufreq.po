@@ -105,3 +105,15 @@ msgstr "cpufreq/sb_info.zh-cn"
 
 msgid "cpufreq/sb_guide"
 msgstr "cpufreq/sb_guide.zh-cn"
+
+msgid "Network"
+msgstr "网络"
+
+msgid "Hardware Acceleration"
+msgstr "硬件加速"
+
+msgid "Enable PPPoE Acceleration"
+msgstr "启用PPPoE加速"
+
+msgid "Improve PPPoE TX performace, only support built-in NICs"
+msgstr "提升PPPoE发送（TX）性能，只支持内置网卡"

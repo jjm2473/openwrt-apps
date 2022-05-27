@@ -1,0 +1,10 @@
+#!/bin/sh
+
+uci -q batch <<-EOF >/dev/null
+	delete ucitrack.@tuning_net[-1]
+	add ucitrack tuning_net
+	set ucitrack.@tuning_net[-1].init=tuning_net
+	commit ucitrack
+EOF
+
+exit 0

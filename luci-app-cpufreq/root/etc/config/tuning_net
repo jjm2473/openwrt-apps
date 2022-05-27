@@ -1,0 +1,2 @@
+config hw_acct
+	option 'hw_pppoe' '0'

@@ -34,6 +34,10 @@ function index()
     entry({"admin", "system", appname, "sandbox", "commit"}, post("sandbox_commit"))
   end
 
+  if sys.call("ethtool -k eth0 | grep -Fq hw-pppoe: >/dev/null 2>&1") == 0 then
+    entry({"admin", "system", appname, "net"}, cbi("cpufreq/net"), _("Network"), 6).leaf = true
+  end
+
   if defaultpage then
     entry({"admin", "system", appname}, defaultpage, _("Tuning"), 59)
   end

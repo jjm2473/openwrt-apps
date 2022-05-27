@@ -102,3 +102,15 @@ msgstr ""
 
 msgid "cpufreq/sb_guide"
 msgstr ""
+
+msgid "Network"
+msgstr ""
+
+msgid "Hardware Acceleration"
+msgstr ""
+
+msgid "Enable PPPoE Acceleration"
+msgstr ""
+
+msgid "Improve PPPoE TX performace, only support built-in NICs"
+msgstr ""
