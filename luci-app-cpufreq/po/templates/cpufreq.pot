@@ -114,3 +114,6 @@ msgstr ""
 
 msgid "Improve PPPoE TX performace, only support built-in NICs"
 msgstr ""
+
+msgid "Exit Sandbox"
+msgstr ""

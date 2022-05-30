@@ -32,6 +32,7 @@ function index()
         {prefix=luci.dispatcher.build_url("admin", "system", appname, "sandbox")}), _("Sandbox"), 5)
     entry({"admin", "system", appname, "sandbox", "reset"}, post("sandbox_reset"))
     entry({"admin", "system", appname, "sandbox", "commit"}, post("sandbox_commit"))
+    entry({"admin", "system", appname, "sandbox", "exit"}, post("sandbox_exit"))
   end
 
   if sys.call("ethtool -k eth0 | grep -Fq hw-pppoe: >/dev/null 2>&1") == 0 then
@@ -61,12 +62,18 @@ end
 
 function sandbox_reset()
   local sys = require "luci.sys"
-  sys.call("touch /ext_overlay/.reset && sync /ext_overlay")
+  sys.call("/usr/sbin/sandbox reset")
   luci.sys.reboot()
 end
 
 function sandbox_commit()
   local sys = require "luci.sys"
-  sys.call("touch /ext_overlay/.commit && sync /ext_overlay")
+  sys.call("/usr/sbin/sandbox commit")
+  luci.sys.reboot()
+end
+
+function sandbox_exit()
+  local sys = require "luci.sys"
+  sys.call("/usr/sbin/sandbox exit")
   luci.sys.reboot()
 end

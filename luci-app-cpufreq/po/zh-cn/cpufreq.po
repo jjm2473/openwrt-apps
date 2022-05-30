@@ -117,3 +117,6 @@ msgstr "启用PPPoE加速"
 
 msgid "Improve PPPoE TX performace, only support built-in NICs"
 msgstr "提升PPPoE发送（TX）性能，只支持内置网卡"
+
+msgid "Exit Sandbox"
+msgstr "退出沙箱"
