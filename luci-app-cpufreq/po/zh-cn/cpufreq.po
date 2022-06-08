@@ -120,3 +120,9 @@ msgstr "提升PPPoE发送（TX）性能，只支持内置网卡"
 
 msgid "Exit Sandbox"
 msgstr "退出沙箱"
+
+msgid "Enable WAN Port Acceleration"
+msgstr "启用WAN口加速"
+
+msgid "Improve built-in WAN port (eth0) TX performace"
+msgstr "提升WAN口（eth0）发送（TX）性能"

@@ -3,18 +3,22 @@
 START=19
 
 hwacct_config() {
+	config_get wanacct_enabled $1 wan_acct "1"
 	config_get hwpppoe_enabled $1 hw_pppoe "0"
 }
 
 boot() {
 	local hwpppoe_enabled
-	local on=on
+	local wanacct_enabled
+	local hwpppoe=off
+	local wanacct=on
 	config_load tuning_net
 	config_foreach hwacct_config hw_acct
-	[ "$hwpppoe_enabled" = 0 ] && on=off
+	[ "$wanacct_enabled" = 0 ] && wanacct=off
+	[ "$wanacct_enabled" = 1 -a "$hwpppoe_enabled" = 1 ] && hwpppoe=on
 
-	ethtool -K eth0 hw-pppoe $on 2>/dev/null
-	ethtool -K eth1 hw-pppoe $on 2>/dev/null
+	ethtool -K eth0 hw-pppoe $hwpppoe tx-checksum-ip-generic $wanacct tx-scatter-gather $wanacct generic-receive-offload $wanacct 2>/dev/null
+	ethtool -K eth1 hw-pppoe $hwpppoe 2>/dev/null
 }
 
 start() {

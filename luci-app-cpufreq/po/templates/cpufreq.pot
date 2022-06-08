@@ -117,3 +117,9 @@ msgstr ""
 
 msgid "Exit Sandbox"
 msgstr ""
+
+msgid "Enable WAN Port Acceleration"
+msgstr ""
+
+msgid "Improve built-in WAN port (eth0) TX performace"
+msgstr ""
