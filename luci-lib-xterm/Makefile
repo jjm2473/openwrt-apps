@@ -16,6 +16,6 @@ PKG_VERSION:=4.18.0
 PKG_RELEASE:=
 PKG_MAINTAINER:=jjm2473 <jjm2473@gmail.com>
 
-include ../../luci.mk
+include $(TOPDIR)/feeds/luci/luci.mk
 
 # call BuildPackage - OpenWrt buildroot signature
