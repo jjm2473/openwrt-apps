@@ -7,7 +7,7 @@
 include $(TOPDIR)/rules.mk
 
 LUCI_TITLE:=luci for taskd
-LUCI_DEPENDS:=+luci-lib-tasks
+LUCI_DEPENDS:=+luci-lib-taskd
 
 PKG_VERSION:=1.0.0
 PKG_RELEASE:=
