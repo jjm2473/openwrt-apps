@@ -1,0 +1,17 @@
+msgid ""
+msgstr "Content-Type: text/plain; charset=UTF-8"
+
+msgid "Stop running task?"
+msgstr "删除运行中的任务？"
+
+msgid "Finished at:"
+msgstr "完成于："
+
+msgid "Failed at:"
+msgstr "失败于："
+
+msgid "Stop and Remove"
+msgstr "停止并删除"
+
+msgid "Hide"
+msgstr "隐藏"
