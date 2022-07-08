@@ -10,13 +10,13 @@ local m, s, o
 
 local t=Template("tasks/all")
 
-m = SimpleForm("taskd",
-	translate("Tasks"),
-	translate("Tasks"))
+m = SimpleForm("taskd", 
+	translate("All Tasks"), 
+	translate("All submitted tasks, including system defined tasks"))
 m.submit=false
 m.reset=false
 
-s = m:section(Table, tasks, translate("All Submitted Tasks"))
+s = m:section(Table, tasks)
 s.config = "tasks"
 
 o = s:option(DummyValue, "_id", translate("ID"))

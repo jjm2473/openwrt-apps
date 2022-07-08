@@ -1,14 +1,11 @@
 
-module("luci.controller.tasks", package.seeall)
+module("luci.controller.tasks.index", package.seeall)
 
 
 function index()
-  entry({"admin", "system", "tasks"}, alias("admin", "system", "tasks", "all"), _("Tasks"), 56)
-  --entry({"admin", "system", "tasks", "user"}, cbi("tasks/user"), _("User Tasks"), 1)
-  entry({"admin", "system", "tasks", "all"}, form("tasks/all"), _("All Tasks"), 2)
-  entry({"admin", "system", "tasks", "status"}, call("tasks_status"))
-  entry({"admin", "system", "tasks", "log"}, call("tasks_log"))
-  entry({"admin", "system", "tasks", "stop"}, post("tasks_stop"))
+  entry({"admin", "system", "tasks", "status"}, call("tasks_status")).dependent=false
+  entry({"admin", "system", "tasks", "log"}, call("tasks_log")).dependent=false
+  entry({"admin", "system", "tasks", "stop"}, post("tasks_stop")).dependent=false
 end
 
 local util  = require "luci.util"
