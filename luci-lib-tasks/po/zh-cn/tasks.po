@@ -1,0 +1,44 @@
+msgid ""
+msgstr "Content-Type: text/plain; charset=UTF-8"
+
+msgid "Tasks"
+msgstr "后台任务"
+
+msgid "All Tasks"
+msgstr "所有任务"
+
+msgid "All Submitted Tasks"
+msgstr "已提交的任务"
+
+msgid "Status"
+msgstr "状态"
+
+msgid "Running"
+msgstr "运行中"
+
+msgid "Stopped:"
+msgstr "已停止"
+
+msgid "Start Time"
+msgstr "开始时间"
+
+msgid "Log"
+msgstr "日志"
+
+msgid "Remove"
+msgstr "移除"
+
+msgid "Stop running task?"
+msgstr "删除运行中的任务？"
+
+msgid "Finished at:"
+msgstr "完成于："
+
+msgid "Failed at:"
+msgstr "失败于："
+
+msgid "Stop and Remove"
+msgstr "停止并删除"
+
+msgid "Hide"
+msgstr "隐藏"
