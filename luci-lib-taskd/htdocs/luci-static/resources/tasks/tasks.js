@@ -34,16 +34,46 @@
     const getTaskDetail = function(task_id) {
         return request("/cgi-bin/luci/admin/system/tasks/status?task_id="+task_id).then(data=>JSON.parse(data));
     };
-    const show_log = function(task_id, nohide) {
-        let showing = true;
-        let running = true;
+    const create_dialog = function(cfg) {
         const container = document.createElement('div');
         container.id = "tasks_detail_container";
         container.innerHTML = taskd.dialog_template;
 
         document.body.appendChild(container);
         const title_view = container.querySelector(".dialog-title-bar .dialog-title");
-        title_view.innerText = task_id;
+        title_view.innerText = cfg.title;
+
+        const term = new Terminal({convertEol: true});
+        if (cfg.nohide) {
+            container.querySelector(".dialog-icon-min").hidden = true;
+        } else {
+            container.querySelector(".dialog-icon-min").onclick = function(){
+                container.hidden=true;
+                term.dispose();
+                document.body.removeChild(container);
+                cfg.onhide && cfg.onhide();
+                return false;
+            };
+        }
+        term.open(document.getElementById("tasks_xterm_log"));
+
+        return {term,container};
+    };
+    const show_log_txt = function(title, content, onclose) {
+        const dialog = create_dialog({title, onhine:onclose});
+        const container = dialog.container;
+        const term = dialog.term;
+        container.querySelector(".dialog-icon-close").hidden = true;
+        term.write(content);
+    };
+    const show_log = function(task_id, nohide) {
+        let showing = true;
+        let running = true;
+        const dialog = create_dialog({title:task_id, nohide, onhide:function(){showing=false;}});
+        const container = dialog.container;
+        const term = dialog.term;
+
+        const title_view = container.querySelector(".dialog-title-bar .dialog-title");
         container.querySelector(".dialog-icon-close").onclick = function(){
             if (!running || confirm($gettext("Stop running task?"))) {
                 running=false;
@@ -54,20 +84,6 @@
             }
             return false;
         };
-        const term = new Terminal({convertEol: true});
-        if (nohide) {
-            container.querySelector(".dialog-icon-min").hidden = true;
-        } else {
-            container.querySelector(".dialog-icon-min").onclick = function(){
-                container.hidden=true;
-                showing=false;
-                term.dispose();
-                document.body.removeChild(container);
-                return false;
-            };
-        }
-        //window.xterm=term;
-        term.open(document.getElementById("tasks_xterm_log"));
         const checkTask = function() {
             return getTaskDetail(task_id).then(data=>{
                 if (!running) {
@@ -118,5 +134,6 @@
     };
     taskd.show_log = show_log;
     taskd.remove = del_task;
+    taskd.show_log_txt = show_log_txt;
     window.taskd=taskd;
 })();
