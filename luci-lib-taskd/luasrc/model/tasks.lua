@@ -44,4 +44,39 @@ taskd.status = function (task_id)
   return ary
 end
 
+taskd.docker_map = function(config, task_id, script_path, title, desc)
+  require("luci.cbi")
+  require("luci.http")
+  require("luci.sys")
+  local translate = require("luci.i18n").translate
+  local m
+  m = luci.cbi.Map(config, title, desc)
+  m.template = "tasks/docker"
+  m.pageaction = false
+  m.apply_on_parse = false
+  m.script_path = script_path
+  m.task_id = task_id
+  m.check_task = true
+  m.on_after_apply = function(self)
+    local cmd
+    local action = luci.http.formvalue("cbi.apply") or "null"
+    if "upgrade" == action or "install" == action
+        or "start" == action or "stop" == action or "restart" == action or "rm" == action then
+      cmd = string.format("\"%s\" %s", script_path, action)
+    end
+    if cmd then
+      if luci.sys.call("/etc/init.d/tasks task_add " .. task_id .. " '" .. cmd .. "' >/dev/null 2>&1") ~= 0 then
+        m.task_start_failed = true
+        m.message = translate("Config saved, but apply failed")
+      end
+    else
+      m.message = translate("Unknown command: ") .. action
+    end
+    if m.message then
+      m.check_task = false
+    end
+  end
+  return m
+end
+
 return taskd
