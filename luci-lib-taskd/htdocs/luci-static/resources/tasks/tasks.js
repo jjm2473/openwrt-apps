@@ -97,6 +97,12 @@
                 title += " > " + (data.command || '');
                 title_view.title = title;
                 title_view.innerText = title;
+                if (!data.running) {
+                    container.classList.add('tasks_stopped')
+                    if (data.exit_code !== 0) {
+                        container.classList.add('tasks_failed')
+                    }
+                }
                 return data.running;
             });
         };
