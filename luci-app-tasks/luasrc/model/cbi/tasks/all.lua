@@ -1,6 +1,5 @@
 --[[
 LuCI - Lua Configuration Interface
-Copyright 2019 lisaac <https://github.com/lisaac/luci-app-dockerman>
 ]]--
 
 local taskd = require "luci.model.tasks"
