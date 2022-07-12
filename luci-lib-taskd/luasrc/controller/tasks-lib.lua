@@ -1,5 +1,5 @@
 
-module("luci.controller.tasks.index", package.seeall)
+module("luci.controller.tasks-lib", package.seeall)
 
 
 function index()
