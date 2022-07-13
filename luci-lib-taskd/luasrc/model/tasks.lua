@@ -52,11 +52,25 @@ taskd.docker_map = function(config, task_id, script_path, title, desc)
   local m
   m = luci.cbi.Map(config, title, desc)
   m.template = "tasks/docker"
+  -- hide default buttons
   m.pageaction = false
-  m.apply_on_parse = false
+  -- we want hook 'on_after_apply' works, 'apply_on_parse' can be true (rollback) or false (no rollback),
+  -- but 'apply_on_parse' must be true for luci 17.01 and below
+  m.apply_on_parse = true
   m.script_path = script_path
   m.task_id = task_id
   m.check_task = true
+  m.on_before_apply = function(self)
+    if self.uci.rollback then
+      -- luci 18.06+ has 'rollback' function
+      -- rollback dialog will show because 'apply_on_parse' is true,
+      -- hide rollback dialog by hook 'apply' function
+      local apply = self.uci.apply
+      self.uci.apply = function(uci, rollback)
+        apply(uci, false)
+      end
+    end
+  end
   m.on_after_apply = function(self)
     local cmd
     local action = luci.http.formvalue("cbi.apply") or "null"
@@ -66,14 +80,14 @@ taskd.docker_map = function(config, task_id, script_path, title, desc)
     end
     if cmd then
       if luci.sys.call("/etc/init.d/tasks task_add " .. task_id .. " '" .. cmd .. "' >/dev/null 2>&1") ~= 0 then
-        m.task_start_failed = true
-        m.message = translate("Config saved, but apply failed")
+        self.task_start_failed = true
+        self.message = translate("Config saved, but apply failed")
       end
     else
-      m.message = translate("Unknown command: ") .. action
+      self.message = translate("Unknown command: ") .. action
     end
-    if m.message then
-      m.check_task = false
+    if self.message then
+      self.check_task = false
     end
   end
   return m

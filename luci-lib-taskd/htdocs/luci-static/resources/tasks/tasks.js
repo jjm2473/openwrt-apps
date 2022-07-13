@@ -92,14 +92,14 @@
                 running = data.running;
                 let title = task_id;
                 if (!data.running && data.stop) {
-                    title += " (" + (data.exit_code==0?$gettext("Finished at:"):$gettext("Failed at:")) + " " + new Date(data.stop * 1000).toLocaleString() + ")";
+                    title += " (" + (data.exit_code?$gettext("Failed at:"):$gettext("Finished at:")) + " " + new Date(data.stop * 1000).toLocaleString() + ")";
                 }
                 title += " > " + (data.command || '');
                 title_view.title = title;
                 title_view.innerText = title;
                 if (!data.running) {
                     container.classList.add('tasks_stopped')
-                    if (data.exit_code !== 0) {
+                    if (data.exit_code) {
                         container.classList.add('tasks_failed')
                     }
                 }
@@ -142,4 +142,57 @@
     taskd.remove = del_task;
     taskd.show_log_txt = show_log_txt;
     window.taskd=taskd;
+})();
+
+(function(){
+    // compat
+    if (typeof(window.findParent) !== 'function') {
+        const elem = function(e) {
+			return (e != null && typeof(e) == 'object' && 'nodeType' in e);
+		};
+        const matches = function(node, selector) {
+			var m = elem(node) ? node.matches || node.msMatchesSelector : null;
+			return m ? m.call(node, selector) : false;
+		};
+        window.findParent = function (node, selector) {
+	        if (elem(node) && node.closest)
+				return node.closest(selector);
+
+			while (elem(node))
+				if (matches(node, selector))
+					return node;
+				else
+					node = node.parentNode;
+
+			return null;
+        };
+    }
+    if (typeof(window.cbi_submit) !== 'function') {
+        const makeHidden = function(name) {
+            const input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = name;
+            return input;
+        };
+        window.cbi_submit = function(elem, name, value, action) {
+            var form = elem.form || findParent(elem, 'form');
+
+            if (!form)
+                return false;
+
+            if (action)
+                form.action = action;
+
+            if (name) {
+                var hidden = form.querySelector('input[type="hidden"][name="%s"]'.format(name)) ||
+                    makeHidden(name);
+
+                hidden.value = value || '1';
+                form.appendChild(hidden);
+            }
+
+            form.submit();
+            return true;
+        };
+    }
 })();
