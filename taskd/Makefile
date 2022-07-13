@@ -19,6 +19,7 @@ define Package/$(PKG_NAME)
 	CATEGORY:=Utilities
 	TITLE:=Simple Task Manager
 	DEPENDS:=+procd +bash
+	PKGARCH:=all
 endef
 
 define Package/$(PKG_NAME)/description
