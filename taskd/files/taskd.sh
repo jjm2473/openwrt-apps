@@ -14,7 +14,10 @@ trap "onexit; trap - SIGTERM && kill -- -$$" EXIT
 
 exec </dev/null >>"/var/log/tasks/$TASK_ID.log" 2>&1
 
-bash -c "$TASK_CMD"
+export HOME=/root
+export TERM=xterm-256color
+
+script -efqc "stty cols 80 rows 24 ; $TASK_CMD" /dev/null
 RET=$?
 
 trap - EXIT

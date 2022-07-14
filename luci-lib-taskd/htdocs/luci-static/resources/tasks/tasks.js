@@ -43,7 +43,7 @@
         const title_view = container.querySelector(".dialog-title-bar .dialog-title");
         title_view.innerText = cfg.title;
 
-        const term = new Terminal({convertEol: true});
+        const term = new Terminal({convertEol: cfg.convertEol||false});
         if (cfg.nohide) {
             container.querySelector(".dialog-icon-min").hidden = true;
         } else {
@@ -60,7 +60,7 @@
         return {term,container};
     };
     const show_log_txt = function(title, content, onclose) {
-        const dialog = create_dialog({title, onhine:onclose});
+        const dialog = create_dialog({title, convertEol:true, onhine:onclose});
         const container = dialog.container;
         const term = dialog.term;
         container.querySelector(".dialog-icon-close").hidden = true;
