@@ -1,11 +1,19 @@
 
 <% if self.task_start_failed then %>
-<div class="alert-message warning"><%:Another task running, try again later.%> <a href='javascript:void(taskd.show_log("<%=self.task_id%>", true))'><%:Click here to check running task%></a></div>
+<div class="alert-message warning"><%:Another task running, try again later.%> <a href="javascript:void(taskd.show_log('<%=self.task_id%>'))"><%:Click here to check running task%></a></div>
 <% end %>
 
 <%+cbi/map%>
+<%
+local task_running = false
+local taskd = require "luci.model.tasks"
+local status = taskd.status(self.task_id)
+task_running = status.running
+-%>
 <div class="cbi-page-actions control-group">
-
+<%
+if not task_running then
+%>
     <%
     local util  = require "luci.util"
     local container_status = util.trim(util.exec(self.script_path.." status"))
@@ -24,22 +32,25 @@
     <input class="btn cbi-button cbi-button-apply" type="button" value="<%:Start%>" onclick="cbi_submit(this, 'cbi.apply', 'start')" />
 
     <input class="btn cbi-button cbi-button-remove" type="button" value="<%:Remove%>" onclick="cbi_submit(this, 'cbi.apply', 'rm')" />
-        <% end %>
-    <% else %>
+        <% end
+      else %>
     <input class="btn cbi-button cbi-button-apply" type="button" value="<%:Install%>" onclick="cbi_submit(this, 'cbi.apply', 'install')" />
-    <% end %>
+    <% end
+else
+    %>
+    <input class="btn cbi-button cbi-button-apply" type="button" value="<%:Task Running%>&hellip;" onclick="taskd.show_log('<%=self.task_id%>')" />
+<%
+end
+%>
 </div>
+
 <%+tasks/embed%>
 <%
-if self.check_task then
-    local taskd = require "luci.model.tasks"
-    local status = taskd.status(self.task_id)
-    if status.running then
+if self.auto_show_task and task_running then
 -%>
 <script>
-    taskd.show_log("<%=self.task_id%>", true);
+    taskd.show_log("<%=self.task_id%>");
 </script>
 <%
-    end
 end
 %>

@@ -59,7 +59,7 @@ taskd.docker_map = function(config, task_id, script_path, title, desc)
   m.apply_on_parse = true
   m.script_path = script_path
   m.task_id = task_id
-  m.check_task = true
+  m.auto_show_task = true
   m.on_before_apply = function(self)
     if self.uci.rollback then
       -- luci 18.06+ has 'rollback' function
@@ -87,7 +87,7 @@ taskd.docker_map = function(config, task_id, script_path, title, desc)
       self.message = translate("Unknown command: ") .. action
     end
     if self.message then
-      self.check_task = false
+      self.auto_show_task = false
     end
   end
   return m
