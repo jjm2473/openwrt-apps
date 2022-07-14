@@ -77,13 +77,15 @@ function tasks_log()
 end
 
 function tasks_stop()
-  local os = require "os"
+  local sys = require("luci.sys")
   local task_id = luci.http.formvalue("task_id") or ""
   if task_id == "" then
     luci.http.status(400)
     luci.http.write("task_id is empty")
     return
   end
-  local r = os.execute("/etc/init.d/tasks task_del "..task_id.." >/dev/null 2>&1")
+  if sys.call("/etc/init.d/tasks task_del "..task_id.." >/dev/null 2>&1") ~= 0 then
+    nixio.nanosleep(2, 10000000)
+  end
   luci.http.status(204)
 end
