@@ -8,8 +8,9 @@ include $(TOPDIR)/rules.mk
 
 LUCI_TITLE:=Task library
 LUCI_DEPENDS:=+luci-lib-xterm +taskd
+LUCI_PKGARCH:=all
 
-PKG_VERSION:=1.0.9
+PKG_VERSION:=1.0.10
 PKG_RELEASE:=
 PKG_MAINTAINER:=jjm2473 <jjm2473@gmail.com>
 
