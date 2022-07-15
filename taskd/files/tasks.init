@@ -7,7 +7,6 @@ START=49
 extra_command "task_add" "<task_id> <task_cmd> [<time_wait>] Add and run a task, time_wait is wait time before auto delete stopped task, in seconds, -1 means forever"
 extra_command "task_del" "<task_id> Stop and delete task"
 extra_command "task_status" "[<task_id>] Dump task status, dump all tasks if no task_id specified"
-extra_command "task_stop_at" "<task_id> Get stop time"
 extra_command "task_gc" "Auto delete exipred (stopped and after timw_wait) tasks"
 extra_command "_task_onstop" "<task_id> Update stop time, for internal usage"
 
@@ -67,7 +66,7 @@ _task_status() {
 	local data
 
 	json_init
-	[ -n "$service" ] && json_add_string name "$service"
+	json_add_string name "$service"
 
 	data=$(_procd_ubus_call list | jsonfilter -e '@["'"$service"'"]')
 	[ -z "$data" ] && return 1
@@ -95,12 +94,6 @@ task_status() {
 	_task_status "$task_id"
 }
 
-task_stop_at() {
-	local task_id="${1}"
-	[ -z "$task_id" ] && return 127
-	date +'%s' -r "/var/log/tasks/$task_id.log"
-}
-
 task_gc() {
 	local service="$(basename ${basescript:-$initscript})"
 	local task_id instance time_wait
@@ -126,8 +119,39 @@ task_gc() {
 	done
 }
 
+_insert_exit() {
+	local exit_code="$2"
+	eval "`jshn -r "$1" | grep -v json_init`"
+	json_select data || {
+		_procd_set_param data stop=`date +'%s'` exit_code="$exit_code"
+		return
+	}
+	json_add_string stop `date +'%s'`
+	json_add_string exit_code "$exit_code"
+	json_select ..
+}
+
+_task_exit() {
+	local task_id="$1"
+	local exit_code="$2"
+	local inst_json="$3"
+
+	_procd_call json_add_object "$task_id"
+	_procd_call _insert_exit "$inst_json" "$exit_code"
+	_procd_call json_close_object
+}
+
 _task_onstop() {
 	local task_id="${1}"
+	local exit_code="${2}"
 	[ -z "$task_id" ] && return 127
-	touch "/var/log/tasks/$task_id.log"
+	local service="$(basename ${basescript:-$initscript})"
+
+	json_init
+	json_add_string name "$service"
+	data=$(_procd_ubus_call list | jsonfilter -e '@["'"$service"'"].instances["'"$task_id"'"]')
+	[ -z "$data" ] && return 1
+	json_cleanup
+
+	rc_procd _task_exit "$task_id" "$exit_code" "$data"
 }

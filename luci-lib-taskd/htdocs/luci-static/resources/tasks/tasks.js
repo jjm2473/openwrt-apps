@@ -103,7 +103,8 @@
                         container.classList.add('tasks_failed')
                     }
                 }
-                return data.running;
+                // last pull
+                return showing;
             });
         };
         let logoffset = 0;
