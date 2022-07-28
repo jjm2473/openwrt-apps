@@ -43,6 +43,12 @@ msgstr "Interactive(灵敏)"
 msgid "Fan trigger temperature"
 msgstr "风扇启动温度"
 
+msgid "Fan temperature hysteresis"
+msgstr "风扇温度容错"
+
+msgid "Set a larger value to avoid frequent restart of the fan"
+msgstr "设置更大的值以避免频繁重启风扇"
+
 msgid "IPK Mirror"
 msgstr "IPK镜像服务器"
 

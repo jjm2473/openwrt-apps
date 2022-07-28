@@ -1,3 +1,4 @@
 config cpufreq
 	option 'governor' ''
 	option 'fan_temp' '85'
+	option 'fan_hyst' '3'

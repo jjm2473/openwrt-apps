@@ -40,6 +40,12 @@ msgstr ""
 msgid "Fan trigger temperature"
 msgstr ""
 
+msgid "Fan temperature hysteresis"
+msgstr ""
+
+msgid "Set a larger value to avoid frequent restart of the fan"
+msgstr ""
+
 msgid "IPK Mirror"
 msgstr ""
 
