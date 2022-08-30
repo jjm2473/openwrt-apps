@@ -6,9 +6,7 @@ PKG_RELEASE:=2
 
 PKG_SOURCE_URL_FILE:=v$(PKG_VERSION).tar.gz
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_GIT_URL:=github.com/XGHeaven/homebox
-PKG_GIT_REF:=v$(PKG_VERSION)
-PKG_SOURCE_URL:=https://codeload.$(PKG_GIT_URL)/tar.gz/$(PKG_GIT_REF)?
+PKG_SOURCE_URL:=https://github.com/XGHeaven/homebox/archive/refs/tags/
 PKG_HASH:=815a2a0fc5458245769648ef5b394f69fdec2573a1403b789146be0c4217a443
 
 PKG_BUILD_DEPENDS:=golang/host homebox/host
