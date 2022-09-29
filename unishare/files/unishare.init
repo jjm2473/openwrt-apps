@@ -40,13 +40,17 @@ clean_unishare_users() {
     for username in $users; do
         smbpasswd -L -x "$username" >/dev/null 2>&1
     done
+    lock /var/lock/group
     sed -i -E 's/^unishare:x:(\d+):.+/unishare:x:\1:/' /etc/group
+    lock -u /var/lock/group
     users=`grep -s ':unishare:' /etc/passwd | cut -d: -f1`
     [ -z "$users" ] && return 0
+    lock /var/lock/passwd
     for username in $users; do
         sed -i "/^$username:/d" /etc/shadow
     done
     sed -i -E '/^[^:]+:x:\d+:\d+:unishare:.*/d' /etc/passwd
+    lock -u /var/lock/passwd
 }
 
 clean_samba() {
