@@ -258,6 +258,7 @@ start_service() {
     config_foreach global_config global
     [ "$UNISHARE_G_ENABLED" = "1" ] || {
         uci commit samba4
+        [ "$ONBOOT" = "1" ] || /etc/init.d/samba4 reload
         return 0
     }
     [ -z "$UNISHARE_G_DAVPORT" ] && UNISHARE_G_DAVPORT=8080
