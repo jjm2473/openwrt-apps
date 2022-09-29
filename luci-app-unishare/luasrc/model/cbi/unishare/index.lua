@@ -14,7 +14,7 @@ o = s:taboption("general", Flag, "anonymous", translate("Allow Anonymous"))
 o.default = 0
 
 o = s:taboption("webdav", Value, "webdav_port", translate("WebDAV Port"))
-o.type = "port"
+o.datatype = "port"
 
 s = m:section(TypedSection, "share", translate("Shares"), translate("(The user marked in <b>Bold</b> has write access)"))
 s.anonymous = true
@@ -26,12 +26,32 @@ function s.create(...)
 	luci.http.redirect(s.extedit % sid)
 end
 
-o = s:option(Value, "path", translate("Path"))
-o.type = "path"
-o.rmempty = false
+path = s:option(Value, "path", translate("Path"))
+path.datatype = "string"
+path.rmempty = false
+path.validate = function(self, value, section)
+    if value then
+        if value == "/" or string.match(value, "^/.+[^/]$") then
+            if value == "/" and (nil == name:formvalue(section) or "" == name:formvalue(section)) then
+                return nil, translate("Name cannot be empty when Path is /")
+            end
+            return value
+        else
+            return nil, translate("Path must starts with '/' and not ends with '/'")
+        end
+    end
+    return AbstractValue.validate(self, value, section)
+end
 
-o = s:option(Value, "name", translate("Name"))
-o.rmempty = true
+name = s:option(Value, "name", translate("Name"))
+name.datatype = "string"
+name.rmempty = true
+name.validate = function(self, value, section)
+    if value and string.match(value, "[`&|;<>/\\*?$#]") then
+        return nil, translatef("Name must not contains '%s'", "`&|;<>/\\*?$#")
+    end
+    return AbstractValue.validate(self, value, section)
+end
 
 local function uci2string(v, s)
     if v == nil then

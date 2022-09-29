@@ -16,12 +16,32 @@ s = m:section(NamedSection, arg[1], "share", "")
 s.addremove = false
 s.dynamic = false
 
-o = s:option(Value, "path", translate("Path"))
-o.type = "path"
-o.rmempty = false
+path = s:option(Value, "path", translate("Path"))
+path.datatype = "string"
+path.rmempty = false
+path.validate = function(self, value, section)
+    if value then
+        if value == "/" or string.match(value, "^/.+[^/]$") then
+            if value == "/" and (nil == name:formvalue(section) or "" == name:formvalue(section)) then
+                return nil, translate("Name cannot be empty when Path is /")
+            end
+            return value
+        else
+            return nil, translate("Path must starts with '/' and not ends with '/'")
+        end
+    end
+    return AbstractValue.validate(self, value, section)
+end
 
-o = s:option(Value, "name", translate("Name"))
-o.rmempty = true
+name = s:option(Value, "name", translate("Name"))
+name.datatype = "string"
+name.rmempty = true
+name.validate = function(self, value, section)
+    if value and string.match(value, "[`&|;<>/\\*?$#]") then
+        return nil, translatef("Name must not contains '%s'", "`&|;<>/\\*?$#")
+    end
+    return AbstractValue.validate(self, value, section)
+end
 
 o = s:option(StaticList, "rw", translate("Read/Write Users"),
     translatef("'Everyone' includes anonymous if enabled, 'Logged Users' includes all users configured in '%s' tab", 
