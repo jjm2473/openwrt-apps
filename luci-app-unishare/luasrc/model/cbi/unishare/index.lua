@@ -1,5 +1,5 @@
 
-m = Map("unishare")
+m = Map("unishare", nil, translate("Configure multiple file sharing protocols in one page (Samba, WebDAV, maybe more in the future?)"))
 
 s = m:section(TypedSection, "global", translate("Global"))
 s:tab("general", translate("General Setup"))

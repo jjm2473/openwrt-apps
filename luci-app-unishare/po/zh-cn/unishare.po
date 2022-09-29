@@ -4,6 +4,9 @@ msgstr ""
 msgid "UniShare"
 msgstr "统一文件共享"
 
+msgid "Configure multiple file sharing protocols in one page (Samba, WebDAV, maybe more in the future?)"
+msgstr "在一个页面中配置多种文件共享协议（Samba，WebDAV，也许以后会支持更多？）"
+
 msgid "Global"
 msgstr "全局"
 
