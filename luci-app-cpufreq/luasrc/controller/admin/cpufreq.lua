@@ -35,7 +35,8 @@ function index()
     entry({"admin", "system", appname, "sandbox", "exit"}, post("sandbox_exit"))
   end
 
-  if sys.call("ethtool -k eth0 | grep -Fq hw-pppoe: >/dev/null 2>&1") == 0 then
+  local hwppoe_feature = luci.util.trim(sys.exec("ethtool -k eth0 | grep -F hw-pppoe: 2>/dev/null"))
+  if hwppoe_feature ~= nil and hwppoe_feature ~= "" and not string.match(hwppoe_feature, "%[fixed%]") then
     entry({"admin", "system", appname, "net"}, cbi("cpufreq/net"), _("Network"), 6).leaf = true
   end
 
