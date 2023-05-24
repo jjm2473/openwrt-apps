@@ -1,0 +1,18 @@
+# Copyright (C) 2016 Openwrt.org
+#
+# This is free software, licensed under the Apache License, Version 2.0 .
+#
+
+include $(TOPDIR)/rules.mk
+
+LUCI_TITLE:=LuCI fan control
+LUCI_DEPENDS:=+coreutils-stat
+LUCI_PKGARCH:=all
+PKG_VERSION:=0.0.1-1
+PKG_RELEASE:=
+PKG_MAINTAINER:=jjm2473 <jjm2473@gmail.com>
+
+include ../luci-alias.mk
+
+# call BuildPackage - OpenWrt buildroot signature
+
