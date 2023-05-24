@@ -8,7 +8,7 @@
 
 local sys  = require "luci.sys"
 
-local insandbox = sys.call("grep '^overlayfs:/overlay / ' /proc/mounts | grep -Fq 'upperdir=/ext_overlay/upper'") == 0
+local insandbox = sys.call("/usr/sbin/sandbox status") == 0
 
 if insandbox then
 %>

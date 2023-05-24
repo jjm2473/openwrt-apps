@@ -27,7 +27,7 @@ function index()
   defaultpage = defaultpage or alias("admin", "system", appname, "boot")
   entry({"admin", "system", appname, "boot"}, cbi("cpufreq/boot"), _("Boot"), 4).leaf = true
 
-  if sys.call("grep -Fq /ext_overlay /lib/upgrade/platform.sh >/dev/null 2>&1") == 0 then
+  if sys.call("[ -d /ext_overlay ] >/dev/null 2>&1") == 0 then
     entry({"admin", "system", appname, "sandbox"}, call("sandbox_index", 
         {prefix=luci.dispatcher.build_url("admin", "system", appname, "sandbox")}), _("Sandbox"), 5)
     entry({"admin", "system", appname, "sandbox", "reset"}, post("sandbox_reset"))
