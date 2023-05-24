@@ -7,8 +7,8 @@ msgstr "杂项设置"
 msgid "CPU Tuning"
 msgstr "CPU调节"
 
-msgid "Manage CPU performance and temperature over LuCI."
-msgstr "通过LuCI调节CPU性能和温度"
+msgid "Manage CPU performance over LuCI."
+msgstr "通过LuCI调节CPU性能"
 
 msgid "CPU frequence:"
 msgstr "CPU频率:"

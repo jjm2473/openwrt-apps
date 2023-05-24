@@ -7,7 +7,7 @@ msgstr ""
 msgid "CPU Tuning"
 msgstr ""
 
-msgid "Manage CPU performance and temperature over LuCI."
+msgid "Manage CPU performance over LuCI."
 msgstr ""
 
 msgid "CPU frequence:"

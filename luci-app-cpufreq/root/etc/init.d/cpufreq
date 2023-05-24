@@ -4,8 +4,6 @@ START=20
 
 get_config() {
 	config_get governor $1 governor `cat /sys/devices/system/cpu/cpufreq/policy0/scaling_governor 2>/dev/null || echo ondemand`
-	config_get fan_temp $1 fan_temp 85
-	config_get fan_hyst $1 fan_hyst 3
 }
 
 start() {
@@ -13,8 +11,6 @@ start() {
 	config_foreach get_config cpufreq
 
 	sh -c "echo $governor > /sys/devices/system/cpu/cpufreq/policy0/scaling_governor" 2>/dev/null
-	sh -c "echo ${fan_temp}000 > /sys/devices/virtual/thermal/thermal_zone0/trip_point_0_temp" 2>/dev/null
-	sh -c "echo ${fan_hyst}000 > /sys/devices/virtual/thermal/thermal_zone0/trip_point_0_hyst" 2>/dev/null
 
 	return 0
 }
