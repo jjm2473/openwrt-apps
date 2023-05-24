@@ -19,11 +19,23 @@ s.anonymous=true
 
 local cur_governor = luci.util.trim(fs.readfile(governor_path))
 
-o = s:option(ListValue, "governor", translate("CPUFreq governor"))
+o = s:option(ListValue, "governor", translate("CPUFreq governor"), translate("It is recommended to use 'ondemand' or 'schedutil'"))
 for i,v in pairs(luci.util.split(luci.util.trim(fs.readfile("/sys/devices/system/cpu/cpufreq/policy0/scaling_available_governors")), " ")) do
   o:value(v, translate(v))
 end
 o.rmempty = false
 o.default = cur_governor
+
+local available_frequencies = luci.util.split(luci.util.trim(fs.readfile("/sys/devices/system/cpu/cpufreq/policy0/scaling_available_frequencies")), " ")
+
+if #available_frequencies > 0 then
+  o = s:option(ListValue, "speed", translate("Frequency"), translate("Pay attention to heat dissipation when choosing high frequency"))
+  o:depends("governor", "userspace")
+  for i,v in pairs(available_frequencies) do
+    o:value(v, (tonumber(v)/1000) .. " MHz")
+  end
+  o.rmempty = true
+  o.default = available_frequencies[1]
+end
 
 return m

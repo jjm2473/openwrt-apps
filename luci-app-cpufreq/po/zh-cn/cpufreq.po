@@ -26,7 +26,7 @@ msgid "conservative"
 msgstr "Conservative(平滑)"
 
 msgid "userspace"
-msgstr "手动"
+msgstr "手动/固定频率"
 
 msgid "powersave"
 msgstr "节能模式"
@@ -39,6 +39,18 @@ msgstr "性能模式"
 
 msgid "interactive"
 msgstr "Interactive(灵敏)"
+
+msgid "schedutil"
+msgstr "基于调度器"
+
+msgid "It is recommended to use 'ondemand' or 'schedutil'"
+msgstr "推荐使用“自动调节”或“基于调度器”"
+
+msgid "Frequency"
+msgstr "频率"
+
+msgid "Pay attention to heat dissipation when choosing high frequency"
+msgstr "选择高频时注意散热"
 
 msgid "Fan trigger temperature"
 msgstr "风扇启动温度"

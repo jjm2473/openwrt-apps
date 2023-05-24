@@ -37,6 +37,18 @@ msgstr ""
 msgid "interactive"
 msgstr ""
 
+msgid "schedutil"
+msgstr ""
+
+msgid "It is recommended to use 'ondemand' or 'schedutil'"
+msgstr ""
+
+msgid "Frequency"
+msgstr ""
+
+msgid "Pay attention to heat dissipation when choosing high frequency"
+msgstr ""
+
 msgid "Fan trigger temperature"
 msgstr ""
 
