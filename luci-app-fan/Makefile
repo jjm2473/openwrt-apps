@@ -8,9 +8,13 @@ include $(TOPDIR)/rules.mk
 LUCI_TITLE:=LuCI fan control
 LUCI_DEPENDS:=+coreutils-stat
 LUCI_PKGARCH:=all
-PKG_VERSION:=1.0.0-1
+PKG_VERSION:=1.0.0-2
 PKG_RELEASE:=
 PKG_MAINTAINER:=jjm2473 <jjm2473@gmail.com>
+
+define Package/luci-app-fan/conffiles
+/etc/config/luci-fan
+endef
 
 include ../luci-alias.mk
 
