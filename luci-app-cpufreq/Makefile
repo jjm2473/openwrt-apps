@@ -4,7 +4,7 @@ include $(TOPDIR)/rules.mk
 LUCI_TITLE:=LuCI for misc configure
 LUCI_PKGARCH:=all
 LUCI_DEPENDS:=+ethtool
-PKG_VERSION:=1.8.1-2
+PKG_VERSION:=1.8.2-1
 PKG_RELEASE:=
 
 define Package/luci-app-cpufreq/conffiles

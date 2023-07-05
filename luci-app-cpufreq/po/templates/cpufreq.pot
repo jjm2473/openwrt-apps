@@ -19,6 +19,9 @@ msgstr ""
 msgid "CPUFreq governor"
 msgstr ""
 
+msgid "Default (Take effect after reboot)"
+msgstr ""
+
 msgid "conservative"
 msgstr ""
 

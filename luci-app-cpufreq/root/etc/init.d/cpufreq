@@ -3,7 +3,7 @@
 START=20
 
 get_config() {
-	config_get governor $1 governor `cat /sys/devices/system/cpu/cpufreq/policy0/scaling_governor 2>/dev/null || echo ondemand`
+	config_get governor $1 governor
 	config_get speed $1 speed
 }
 
@@ -11,8 +11,13 @@ start() {
 	config_load cpufreq
 	config_foreach get_config cpufreq
 
-	sh -c "echo '$governor' > /sys/devices/system/cpu/cpufreq/policy0/scaling_governor" 2>/dev/null
-	[[ "$governor" = "userspace" && -n "$speed" ]] && sh -c "echo '$speed' > /sys/devices/system/cpu/cpufreq/policy0/scaling_setspeed" 2>/dev/null
+	[[ -n "$governor" ]] || return 1
+
+	local policy
+	for policy in `ls /sys/devices/system/cpu/cpufreq/ | grep '^policy'`; do
+		sh -c "echo '$governor' > /sys/devices/system/cpu/cpufreq/$policy/scaling_governor" 2>/dev/null
+		[[ "$governor" = "userspace" && -n "$speed" ]] && sh -c "echo '$speed' > /sys/devices/system/cpu/cpufreq/$policy/scaling_setspeed" 2>/dev/null
+	done
 
 	return 0
 }

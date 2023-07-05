@@ -22,6 +22,9 @@ msgstr "CPU性能策略"
 msgid "Apply"
 msgstr "应用"
 
+msgid "Default (Take effect after reboot)"
+msgstr "默认（重启后生效）"
+
 msgid "conservative"
 msgstr "Conservative(平滑)"
 

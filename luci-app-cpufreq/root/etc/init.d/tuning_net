@@ -8,6 +8,11 @@ hwacct_config() {
 }
 
 boot() {
+	local feature=`ethtool -k eth0 2>/dev/null | grep -F hw-pppoe: 2>/dev/null`
+	[[ -n "$feature" ]] || return 1
+
+	echo "$feature" | grep -qF '[fixed]' && return 1
+
 	local hwpppoe_enabled
 	local wanacct_enabled
 	local hwpppoe=off
@@ -19,9 +24,10 @@ boot() {
 
 	ethtool -K eth0 hw-pppoe $hwpppoe tx-checksum-ip-generic $wanacct tx-scatter-gather $wanacct generic-receive-offload $wanacct 2>/dev/null
 	ethtool -K eth1 hw-pppoe $hwpppoe 2>/dev/null
+
+	return 0
 }
 
 start() {
-	boot
-	/etc/init.d/network restart
+	boot && /etc/init.d/network restart
 }

@@ -19,6 +19,9 @@ msgstr "temperature:"
 msgid "CPUFreq governor"
 msgstr "CPUFreq governor"
 
+msgid "Default (Take effect after reboot)"
+msgstr "Default (Take effect after reboot)"
+
 msgid "conservative"
 msgstr "Conservative"
 
