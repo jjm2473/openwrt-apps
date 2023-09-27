@@ -144,3 +144,27 @@ msgstr ""
 
 msgid "Improve built-in WAN port (eth0) TX performace"
 msgstr ""
+
+msgid "Drivers"
+msgstr ""
+
+msgid "Drivers Settings"
+msgstr ""
+
+msgid "Realtek r8125 driver"
+msgstr ""
+
+msgid "Realtek r8168 driver"
+msgstr ""
+
+msgid "Backported Intel GPU driver (i915-oot)"
+msgstr ""
+
+msgid "Enable additional drivers"
+msgstr ""
+
+msgid "Configure device drivers, kernel modules, etc. Changes here will take effect on next boot"
+msgstr ""
+
+msgid "Please do not choose a driver you do not understand. Choosing the wrong driver may cause the system to fail to start"
+msgstr ""

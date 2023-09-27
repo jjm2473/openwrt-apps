@@ -147,3 +147,27 @@ msgstr "启用WAN口加速"
 
 msgid "Improve built-in WAN port (eth0) TX performace"
 msgstr "提升WAN口（eth0）发送（TX）性能"
+
+msgid "Drivers"
+msgstr "驱动"
+
+msgid "Drivers Settings"
+msgstr "驱动设置"
+
+msgid "Realtek r8125 driver"
+msgstr "Realtek r8125 驱动"
+
+msgid "Realtek r8168 driver"
+msgstr "Realtek r8168 驱动"
+
+msgid "Backported Intel GPU driver (i915-oot)"
+msgstr "移植 Intel GPU 驱动 (i915-oot)"
+
+msgid "Enable additional drivers"
+msgstr "启用额外的驱动"
+
+msgid "Configure device drivers, kernel modules, etc. Changes here will take effect on next boot"
+msgstr "配置设备驱动程序，内核模块等。这里的变更将在下次启动时生效"
+
+msgid "Please do not choose a driver you do not understand. Choosing the wrong driver may cause the system to fail to start"
+msgstr "请勿选择不了解的驱动程序，选择错误可能导致系统无法启动"

@@ -27,9 +27,13 @@ function index()
   defaultpage = defaultpage or alias("admin", "system", appname, "boot")
   entry({"admin", "system", appname, "boot"}, cbi("cpufreq/boot"), _("Boot"), 4).leaf = true
 
+  if nixio.fs.access("/etc/config/kmods") and sys.call("[ -n \"$(ls /etc/modules-pending.d/ | head -c1)\" ] >/dev/null 2>&1") == 0 then
+    entry({"admin", "system", appname, "kmods"}, cbi("cpufreq/kmods"), _("Drivers"), 5).leaf = true
+  end
+
   if sys.call("[ -d /ext_overlay ] >/dev/null 2>&1") == 0 then
     entry({"admin", "system", appname, "sandbox"}, call("sandbox_index", 
-        {prefix=luci.dispatcher.build_url("admin", "system", appname, "sandbox")}), _("Sandbox"), 5)
+        {prefix=luci.dispatcher.build_url("admin", "system", appname, "sandbox")}), _("Sandbox"), 6)
     entry({"admin", "system", appname, "sandbox", "reset"}, post("sandbox_reset"))
     entry({"admin", "system", appname, "sandbox", "commit"}, post("sandbox_commit"))
     entry({"admin", "system", appname, "sandbox", "exit"}, post("sandbox_exit"))
@@ -37,7 +41,7 @@ function index()
 
   local hwppoe_feature = luci.util.trim(sys.exec("ethtool -k eth0 2>/dev/null | grep -F hw-pppoe: 2>/dev/null"))
   if hwppoe_feature ~= nil and hwppoe_feature ~= "" and not string.match(hwppoe_feature, "%[fixed%]") then
-    entry({"admin", "system", appname, "net"}, cbi("cpufreq/net"), _("Network"), 6).leaf = true
+    entry({"admin", "system", appname, "net"}, cbi("cpufreq/net"), _("Network"), 7).leaf = true
   end
 
   if defaultpage then
