@@ -1,6 +1,6 @@
 #!/bin/sh /etc/rc.common
 
-START=39
+START=10
 
 boot() {
 	local enabled=`uci get tuning_boot.@fstab_delay[0].enabled 2>/dev/null`
@@ -12,7 +12,7 @@ boot() {
 	local devices=`uci get tuning_boot.@fstab_delay[0].device 2>/dev/null`
 
 	if [ -n "$devices" ]; then
-		logger -t "fstab_delay" "wait up to $timeout seconds for device(s): $devices"
+		echo "fstab_delay: wait up to $timeout seconds for device(s): $devices" >/dev/kmsg
 		local i=0
 		local dev
 		local ready
@@ -26,12 +26,12 @@ boot() {
 			i=$(($i+1))
 		done
 		if [ $i -lt $timeout ]; then
-			logger -t "fstab_delay" "ready after $i seconds"
+			echo "fstab_delay: ready after $i seconds" >/dev/kmsg
 		else
-			logger -t "fstab_delay" "wait device(s) timeout"
+			echo "fstab_delay: wait device(s) timeout" >/dev/kmsg
 		fi
 	else
-		logger -t "fstab_delay" "sleep $timeout seconds before fstab"
+		echo "fstab_delay: sleep $timeout seconds before fstab" >/dev/kmsg
 		sleep $timeout
 	fi
 	return 0
