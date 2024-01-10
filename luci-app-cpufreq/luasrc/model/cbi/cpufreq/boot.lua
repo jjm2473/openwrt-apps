@@ -35,7 +35,8 @@ local m, s, o
 
 m = Map("tuning_boot", nil, translate("Boot"))
 
-s = m:section(TypedSection, "fstab_delay", translate("Delay before mounting"))
+s = m:section(TypedSection, "fstab_delay", translate("Delay before mounting"),
+	translate("Do not select a network block device (e.g. NBD, iSCSI, etc.), you may have to wait until timeout"))
 s.addremove=false
 s.anonymous=true
 
