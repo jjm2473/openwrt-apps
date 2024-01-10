@@ -91,6 +91,9 @@ msgstr "启动"
 msgid "Delay before mounting"
 msgstr "延迟挂载磁盘"
 
+msgid "Do not select a network block device (e.g. NBD, iSCSI, etc.), you may have to wait until timeout"
+msgstr "请勿选择网络块设备（例如 NBD，iSCSI 等），可能必须等到超时"
+
 msgid "Timeout (seconds)"
 msgstr "超时（秒）"
 
