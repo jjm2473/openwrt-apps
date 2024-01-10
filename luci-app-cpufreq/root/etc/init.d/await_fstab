@@ -1,6 +1,6 @@
 #!/bin/sh /etc/rc.common
 
-START=10
+START=11
 
 boot() {
 	local enabled=`uci get tuning_boot.@fstab_delay[0].enabled 2>/dev/null`

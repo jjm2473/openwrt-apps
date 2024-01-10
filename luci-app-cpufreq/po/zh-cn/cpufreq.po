@@ -88,10 +88,13 @@ msgstr "腾讯云"
 msgid "Boot"
 msgstr "启动"
 
-msgid "Delay before mounting"
-msgstr "延迟挂载磁盘"
+msgid "Delay before disk mounting"
+msgstr "挂载前等待磁盘"
 
-msgid "Do not select a network block device (e.g. NBD, iSCSI, etc.), you may have to wait until timeout"
+msgid "Wait for the hard disk to initialize to solve the problem that the hard disk is not mounted when some applications that rely on the hard disk are started."
+msgstr "等待硬盘初始化，以解决部分依赖硬盘的应用启动时硬盘还未挂载的问题"
+
+msgid "Do not select a network block device (e.g. NBD, iSCSI, etc.), you may have to wait until timeout."
 msgstr "请勿选择网络块设备（例如 NBD，iSCSI 等），可能必须等到超时"
 
 msgid "Timeout (seconds)"
