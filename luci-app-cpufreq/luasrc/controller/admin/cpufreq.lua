@@ -44,6 +44,10 @@ function index()
     entry({"admin", "system", appname, "net"}, cbi("cpufreq/net"), _("Network"), 7).leaf = true
   end
 
+  if nixio.fs.access("/etc/init.d/grub") then
+    entry({"admin", "system", appname, "cmdline"}, cbi("cpufreq/cmdline"), _("Kernel Cmdline"), 8).leaf = true
+  end
+
   if defaultpage then
     entry({"admin", "system", appname}, defaultpage, _("Tuning"), 59)
   end

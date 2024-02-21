@@ -177,3 +177,24 @@ msgstr "配置设备驱动程序，内核模块等。这里的变更将在下次
 
 msgid "Please do not choose a driver you do not understand. Choosing the wrong driver may cause the system to fail to start"
 msgstr "请勿选择不了解的驱动程序，选择错误可能导致系统无法启动"
+
+msgid "Kernel Cmdline"
+msgstr "内核启动参数"
+
+msgid "Current Cmdline"
+msgstr "当前内核启动参数"
+
+msgid "This page configures Linux kernel boot parameters. After saving and applying, the GRUB configuration file of the boot partition will be modified. The parameters will take effect after restarting the system (the boot partition is not within the scope of sandbox protection, please be aware)"
+msgstr "此页面可配置 Linux 内核启动参数。保存并应用以后将修改 boot 分区的 GRUB 配置文件，重启系统以后参数生效（boot分区不在沙箱保护范围，请知悉）"
+
+msgid "Supports PCI device passthrough for virtual machines (KVM/QEMU)"
+msgstr "用于支持虚拟机（KVM/QEMU）的 PCI 设备直通"
+
+msgid "Parameters"
+msgstr "参数"
+
+msgid "Default or empty will be automatically filled in according to the current platform"
+msgstr "默认或者空将自动按当前平台填写"
+
+msgid "Danger! If you do not understand the kernel boot parameters, do not modify them to avoid being unable to start or damaging the hardware"
+msgstr "前方危险！如果不了解内核启动参数，请勿修改，以免无法启动或损坏硬件"
