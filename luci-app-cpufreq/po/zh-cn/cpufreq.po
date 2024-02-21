@@ -193,8 +193,14 @@ msgstr "用于支持虚拟机（KVM/QEMU）的 PCI 设备直通"
 msgid "Parameters"
 msgstr "参数"
 
+msgid "Default"
+msgstr "默认"
+
 msgid "Default or empty will be automatically filled in according to the current platform"
 msgstr "默认或者空将自动按当前平台填写"
+
+msgid "Custom Parameters"
+msgstr "自定义内核参数"
 
 msgid "Danger! If you do not understand the kernel boot parameters, do not modify them to avoid being unable to start or damaging the hardware"
 msgstr "前方危险！如果不了解内核启动参数，请勿修改，以免无法启动或损坏硬件"
