@@ -85,6 +85,30 @@ msgstr "阿里云"
 msgid "Tencent Cloud"
 msgstr "腾讯云"
 
+msgid "CERNET 302"
+msgstr "高校联合镜像站（智能选择最近大学镜像站）"
+
+msgid "SUSTech"
+msgstr "南方科技大学"
+
+msgid "Lanzhou University"
+msgstr "兰州大学"
+
+msgid "Chinese Academy of Sciences"
+msgstr "中国科学院"
+
+msgid "NYIST"
+msgstr "南洋理工大学"
+
+msgid "SJTU"
+msgstr "上海交通大学"
+
+msgid "CQUPT"
+msgstr "重庆邮电大学"
+
+msgid "Qilu University of Technology"
+msgstr "齐鲁工业大学"
+
 msgid "Boot"
 msgstr "启动"
 
