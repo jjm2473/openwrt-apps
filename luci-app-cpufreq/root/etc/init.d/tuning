@@ -12,7 +12,9 @@ start() {
 
 	if [ "$ipk_mirror" != "disable" -a -f "/rom/etc/opkg/distfeeds.conf" ]; then
 		echo "# Generated file, do not edit" > /etc/opkg/distfeeds.conf
-		cat "/rom/etc/opkg/distfeeds.conf" | sed -E 's#https?://downloads.openwrt.org/#'"$ipk_mirror"'#g' >> /etc/opkg/distfeeds.conf
+		cat "/rom/etc/opkg/distfeeds.conf" | \
+			sed -E 's# https?://[^ ]+/openwrt/# https://downloads.openwrt.org/#g' | \
+			sed -E 's#https?://downloads.openwrt.org/#'"$ipk_mirror"'#g' >> /etc/opkg/distfeeds.conf
 	fi
 
 	return 0
