@@ -27,7 +27,7 @@ function index()
   defaultpage = defaultpage or alias("admin", "system", appname, "boot")
   entry({"admin", "system", appname, "boot"}, cbi("cpufreq/boot"), _("Boot"), 4).leaf = true
 
-  if nixio.fs.access("/etc/config/kmods") and sys.call("[ -n \"$(ls /etc/modules-pending.d/ | head -c1)\" ] >/dev/null 2>&1") == 0 then
+  if nixio.fs.access("/etc/config/kmods") and sys.call("[ -n \"$(ls /etc/modules-pending.d/ 2>/dev/null | head -c1)\" ] >/dev/null 2>&1") == 0 then
     entry({"admin", "system", appname, "kmods"}, cbi("cpufreq/kmods"), _("Drivers"), 5).leaf = true
   end
 

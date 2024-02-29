@@ -8,7 +8,7 @@
 
 local sys  = require "luci.sys"
 
-local insandbox = sys.call("/usr/sbin/sandbox status") == 0
+local insandbox = sys.call("/usr/sbin/sandbox status 2>/dev/null") == 0
 
 if insandbox then
 %>
