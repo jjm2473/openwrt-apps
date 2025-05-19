@@ -8,7 +8,7 @@ include $(TOPDIR)/rules.mk
 LUCI_TITLE:=LuCI support for homebox
 LUCI_DEPENDS:=+homebox
 LUCI_PKGARCH:=all
-PKG_VERSION:=1.0.1-4
+PKG_VERSION:=1.0.1-r4
 PKG_RELEASE:=
 
 include ../luci-alias.mk
