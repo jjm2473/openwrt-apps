@@ -20,6 +20,7 @@ define Package/nvtop
   CATEGORY:=Utilities
   TITLE:=NVTOP
   DEPENDS:=@(aarch64||x86_64) +libncursesw +libudev +libdrm
+  URL:=https://github.com/Syllo/nvtop
 endef
 
 define Package/nvtop/description
