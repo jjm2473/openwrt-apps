@@ -3,7 +3,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=mergerfs
 PKG_VERSION:=2.40.2
-PKG_RELEASE:=2
+PKG_RELEASE:=3
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://github.com/trapexit/mergerfs/releases/download/$(PKG_VERSION)/
@@ -30,6 +30,10 @@ define Package/mergerfs/description
  mergerfs is a FUSE based union filesystem geared towards simplifying
  storage and management of files across numerous commodity storage
  devices. It is similar to mhddfs, unionfs, and aufs.
+endef
+
+define Package/mergerfs/conffiles
+/etc/config/mergerfs
 endef
 
 define Package/mergerfs/install
