@@ -3,7 +3,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=mergerfs
 PKG_VERSION:=2.40.2
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://github.com/trapexit/mergerfs/releases/download/$(PKG_VERSION)/
@@ -39,6 +39,11 @@ define Package/mergerfs/install
 	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/mergerfs $(1)/usr/bin/
 	$(INSTALL_DATA) $(PKG_INSTALL_DIR)/usr/lib/mergerfs/preload.so $(1)/usr/lib/mergerfs/
 	$(LN) /sbin/mount.mergerfs $(1)/sbin/fs/mount.mergerfs
+
+	$(INSTALL_DIR) $(1)/etc/config $(1)/etc/init.d $(1)/lib/fstab.d
+	$(INSTALL_CONF) ./files/mergerfs.config $(1)/etc/config/mergerfs
+	$(INSTALL_BIN) ./files/mergerfs.init $(1)/etc/init.d/mergerfs
+	$(INSTALL_DATA) ./files/mergerfs.fstab $(1)/lib/fstab.d/mergerfs.sh
 endef
 
 # Set variables used in the source's Makefile
