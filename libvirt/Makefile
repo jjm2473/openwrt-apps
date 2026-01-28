@@ -4,7 +4,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=libvirt
 PKG_VERSION:=11.10.0
-PKG_RELEASE:=2
+PKG_RELEASE:=3
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
 PKG_SOURCE_URL:=https://libvirt.org/sources/
@@ -63,6 +63,7 @@ define Build/InstallDev
 	$(CP) $(PKG_INSTALL_DIR)/usr/include/libvirt $(1)/usr/include
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/* $(1)/usr/lib
 	$(CP) $(PKG_INSTALL_DIR)/usr/share/libvirt/api $(1)/usr/share/libvirt
+	$(SED) 's,=/usr,=$(STAGING_DIR)/usr,g' $(1)/usr/lib/pkgconfig/*.pc
 endef
 
 MESON_ARGS += \
