@@ -2,8 +2,8 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=zip
-PKG_REV:=30
 PKG_VERSION:=3.0
+PKG_REV:=$(subst .,,$(PKG_VERSION))
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)$(PKG_REV).tar.gz
