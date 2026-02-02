@@ -23,6 +23,7 @@ define Package/noto-fonts-cjk
   CATEGORY:=Fonts
   SUBMENU:=Noto
   URL:=https://github.com/notofonts/noto-fonts
+  PKGARCH:=all
 endef
 
 define Build/Compile

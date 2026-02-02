@@ -23,6 +23,7 @@ define Package/noto-fonts-emoji
   CATEGORY:=Fonts
   SUBMENU:=Noto
   URL:=https://github.com/googlefonts/noto-emoji
+  PKGARCH:=all
 endef
 
 define Build/Compile
