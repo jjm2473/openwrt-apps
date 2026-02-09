@@ -37,7 +37,7 @@ define Package/gobject-introspection/install
 		$(1)/usr
 
 	$(CP) \
-		$(PKG_BUILD_DIR)/$(ARCH)/lib \
+		$(PKG_BUILD_DIR)/$(ARCH)/usr/lib \
 		$(1)/usr
 endef
 

@@ -30,7 +30,7 @@ define Build/Configure
 endef
 
 define Build/Compile
-	rm -f $(PKG_BUILD_DIR)/*/lib/python3.*/site-packages/gi/_gi_cairo.*.so
+	rm -f $(PKG_BUILD_DIR)/*/usr/lib/python3.*/site-packages/gi/_gi_cairo.*.so
 endef
 
 define Package/python3-gobject/install
@@ -38,7 +38,7 @@ define Package/python3-gobject/install
 		$(1)/usr
 
 	$(CP) \
-		$(PKG_BUILD_DIR)/$(ARCH)/lib \
+		$(PKG_BUILD_DIR)/$(ARCH)/usr/lib \
 		$(1)/usr
 endef
 
