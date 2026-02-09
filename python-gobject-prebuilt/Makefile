@@ -6,7 +6,7 @@ PKG_RELEASE:=1
 
 PKG_SOURCE:=python311-gobject-prebuilt-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://github.com/jjm2473/openwrt-apps/releases/download/prebuilt/
-PKG_HASH:=47f4349d30f75a9ab6b36e48201e4d129ec07d65099007a0a12fbd23dd618d01
+PKG_HASH:=0a5ac594212274e703d5c764dc6b612c3c3cfdd9884571c4d9788c0e73d70300
 
 PKG_MAINTAINER:=jjm2473 <jjm2473@gmail.com>
 PKG_LICENSE:=LGPL-2.1-or-later
@@ -21,7 +21,7 @@ define Package/python3-gobject
   CATEGORY:=Languages
   SUBMENU:=Python
   TITLE:=Python bindings for the GObject library
-  DEPENDS:=+gobject-introspection
+  DEPENDS:=@(x86_64||aarch64) +gobject-introspection
   URL:=https://pygobject.gnome.org
 endef
 
